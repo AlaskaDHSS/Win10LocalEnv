@@ -1,20 +1,46 @@
-#Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# A local, virtualized Windows environment
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Reference impl:  https://github.com/luciusbono/Packer-Windows10
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Find Windows trial product keys here:
+https://technet.microsoft.com/en-us/library/jj612867.aspx?f=255&MSPPError=-2147217396
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Current State
+I'm not positive that all of the packer scripts will run w/o intervention.  I need to take the time to do an entire automated build.
+I think there may be an issue running the `configure-winrm` script after successful completion of the `update-windows` script, which is driven from `autounattend.xml`.
+TODO: Fix this.
+
+
+## Setup
+
+### Prereqs
+```
+brew cask install packer
+brew install vagrant
+```
+
+You need to find a Win10_Pro `.iso` file.  It goes in `iso/Win10_1607_English_x64.iso`.
+If you change the path or filename, the change must be reflected in `packer/win_10.json`.
+`TODO:` Automate correct .iso download, I think Packer supports this.
+
+### Running
+Note, this takes multiple hours.
+```
+cd packer
+packer build win_10.json
+vagrant up
+```
+
+### Re-Running
+```
+rm -rf packer/output-virtualbox-iso
+vagrant reload
+```
+
+## Using
+
+RDP is enabled, it's a better experience to use Microsoft Remote Desktop.  IP is set to `10.10.10.10` in `Vagrantfile`.
+If you'd rather use the VirtualBox UI, change the `vb.gui` value in `Vagrantfile`.
+
+Vagrant's default synced folder is set up.  In the guest, `C:\vagrant` is synced to this directory.
