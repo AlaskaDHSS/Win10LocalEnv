@@ -11,6 +11,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "packer/windows_10_virtualbox"
 
   config.vm.network "private_network", ip: "10.10.10.10"
+  
+  # Simplify shared folders.  ".." is /dev on my host.
+  #  Vagrant automatically shares "." with /vagrant.
+  config.vm.synced_folder "..", '/dev'
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = false 
