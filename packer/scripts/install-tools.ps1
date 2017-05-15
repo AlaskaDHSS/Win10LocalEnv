@@ -1,7 +1,7 @@
-choco install googlechrome
-choco install visualstudiocode
-choco install git
-choco install ruby
+choco install googlechrome -y
+choco install visualstudiocode -y
+choco install git -y
+choco install ruby -y
 
 
  # Tools that don't choco 

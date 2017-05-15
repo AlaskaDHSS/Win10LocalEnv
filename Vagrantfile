@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.communicator = :winrm
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
-  config.vm.box = "packer/windows_10_virtualbox"
+  config.vm.box = "packer/windows_10_virtualbox.box"
 
   config.vm.network "private_network", ip: "10.10.10.10"
   
