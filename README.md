@@ -5,16 +5,12 @@ Reference impl:  https://github.com/luciusbono/Packer-Windows10
 Find Windows trial product keys here:
 https://technet.microsoft.com/en-us/library/jj612867.aspx?f=255&MSPPError=-2147217396
 
-
-## Current State
-I'm not positive that all of the packer scripts will run w/o intervention.  I need to take the time to do an entire automated build.
-I think there may be an issue running the `configure-winrm` script after successful completion of the `update-windows` script, which is driven from `autounattend.xml`.
-TODO: Fix this.
-
-
 ## Setup
 
 ### Prereqs
+
+Install packer and vagrant.  On OSX:
+
 ```
 brew cask install packer
 brew install vagrant
