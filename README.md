@@ -21,7 +21,9 @@ If you change the path or filename, the change must be reflected in `packer/win_
 `TODO:` Automate correct .iso download, I think Packer supports this.
 
 ### Running
+
 Note, this takes multiple hours.
+
 ```
 cd packer
 packer build win_10.json
@@ -29,6 +31,7 @@ vagrant up
 ```
 
 ### Re-Running
+
 ```
 rm -rf packer/output-virtualbox-iso
 vagrant reload
